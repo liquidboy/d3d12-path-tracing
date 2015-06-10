@@ -9,11 +9,12 @@ float4 main(PixelShaderInput input) : SV_TARGET
 
 	int counter = 0;
 	while(counter < 10 && index != 0xFFFFFFFF) {
-		if (hits[index].meshID == 0 && rays[index].active == 1) {
+		if (rays[index].applyed == 0 && hits[index].meshID == 0 && rays[index].active == 1) {
 			rays[index].origin += hits[index].distance * rays[index].direct;
 			rays[index].active = 0;
 			rays[index].color = float3(0.0, 0.0, 0.0);
 			rays[index].final = float3(0.0, 0.0, 0.0);
+			rays[index].applyed = 1;
 		}
 		index = rays[index].prev;
 		counter++;

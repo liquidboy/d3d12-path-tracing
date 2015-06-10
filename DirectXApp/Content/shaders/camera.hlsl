@@ -30,6 +30,7 @@ float4 main(PixelShaderInput input) : SV_TARGET
 		ray.final = float3(0.0, 0.0, 0.0);
 		ray.active = 1;
 		ray.iorIdx = -1;
+		ray.applyed = false;
 		rays[index] = ray;
 
 	return float4(0.0, 0.0, 0.0, 0.0);

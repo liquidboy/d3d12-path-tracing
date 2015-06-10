@@ -19,6 +19,8 @@ struct Ray {
 
 	uint index;
 	uint prev;
+
+	uint applyed;
 };
 
 struct Vertice {

@@ -1,8 +1,66 @@
-﻿Сборка начата 11.06.2015 1:18:21.
+﻿Сборка начата 11.06.2015 2:44:12.
      1>Проект "C:\Users\acterhd\Documents\C++\DirectXApp\DirectXApp.vcxproj" в узле 2 (целевые объекты Build).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /IC:\Users\acterhd\Documents\C++\DirectXApp\ /Ix64\Debug\ /IC:\Users\acterhd\Documents\C++\DirectXApp\ /I"Generated Files\\" /Ix64\Debug\ /ZI /ZW /ZW:nostdlib /nologo /W3 /WX- /sdl /MP /Od /Oy- /D _DEBUG /D _UNICODE /D UNICODE /D _DEBUG /D WINAPI_FAMILY=WINAPI_FAMILY_APP /D __WRL_NO_DEFAULT_LIB__ /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"pch.h" /Fp"x64\Debug\pch.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc140.pdb" /Gd /TP /wd4453 /wd28204 /wd4267 /FU"C:\Program Files (x86)\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\References\CommonConfiguration\neutral\platform.winmd" /FU"C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.FoundationContract\1.0.0.0\Windows.Foundation.FoundationContract.winmd" /FU"C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.UniversalApiContract\1.0.0.0\Windows.Foundation.UniversalApiContract.winmd" /FU"C:\Program Files (x86)\Windows Kits\10\References\Windows.Networking.Connectivity.WwanContract\1.0.0.0\Windows.Networking.Connectivity.WwanContract.winmd" /analyze- /errorReport:prompt /bigobj Content\Sample3DSceneRenderer.cpp
+     1>FxCompile:
+         C:\Program Files (x86)\Windows Kits\10\bin\x86\fxc.exe /nologo /E"main" /T ps_5_0 /Fo "C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\camera.cso" /Od /Zi Content\shaders\camera.hlsl 
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(94,20-68): warning X3205: 'sin': conversion from larger type to smaller, possible loss of data
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(94,15-89): warning X3205: 'frac': conversion from larger type to smaller, possible loss of data
+         
+         compilation object save succeeded; see C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\camera.cso
+         C:\Program Files (x86)\Windows Kits\10\bin\x86\fxc.exe /nologo /E"main" /T ps_5_0 /Fo "C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\clear.cso" /Od /Zi Content\shaders\clear.hlsl 
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(94,20-68): warning X3205: 'sin': conversion from larger type to smaller, possible loss of data
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(94,15-89): warning X3205: 'frac': conversion from larger type to smaller, possible loss of data
+         
+         compilation object save succeeded; see C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\clear.cso
+         C:\Program Files (x86)\Windows Kits\10\bin\x86\fxc.exe /nologo /E"main" /T ps_5_0 /Fo "C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\diffuse.cso" /Od /Zi Content\shaders\diffuse.hlsl 
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(94,20-68): warning X3205: 'sin': conversion from larger type to smaller, possible loss of data
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(94,15-89): warning X3205: 'frac': conversion from larger type to smaller, possible loss of data
+         
+         compilation object save succeeded; see C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\diffuse.cso
+         C:\Program Files (x86)\Windows Kits\10\bin\x86\fxc.exe /nologo /E"main" /T ps_5_0 /Fo "C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\final.cso" /Od /Zi Content\shaders\final.hlsl 
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(94,20-68): warning X3205: 'sin': conversion from larger type to smaller, possible loss of data
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(94,15-89): warning X3205: 'frac': conversion from larger type to smaller, possible loss of data
+         
+         compilation object save succeeded; see C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\final.cso
+         C:\Program Files (x86)\Windows Kits\10\bin\x86\fxc.exe /nologo /E"main" /T ps_5_0 /Fo "C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\intersection.cso" /Od /Zi Content\shaders\intersection.hlsl 
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(94,20-68): warning X3205: 'sin': conversion from larger type to smaller, possible loss of data
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(94,15-89): warning X3205: 'frac': conversion from larger type to smaller, possible loss of data
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\intersection.hlsl(93,17-25): warning X3203: signed/unsigned mismatch, unsigned assumed
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\intersection.hlsl(16,29): warning X4000: use of potentially uninitialized variable (intersectSphere)
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\intersection.hlsl(25,2): warning X4000: use of potentially uninitialized variable (t)
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\intersection.hlsl(8,26): warning X4000: use of potentially uninitialized variable (intersectPlane)
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\intersection.hlsl(64,2): warning X4000: use of potentially uninitialized variable (intersectTriangle)
+         
+         compilation object save succeeded; see C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\intersection.cso
+         C:\Program Files (x86)\Windows Kits\10\bin\x86\fxc.exe /nologo /E"main" /T ps_5_0 /Fo "C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\light.cso" /Od /Zi Content\shaders\light.hlsl 
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(94,20-68): warning X3205: 'sin': conversion from larger type to smaller, possible loss of data
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(94,15-89): warning X3205: 'frac': conversion from larger type to smaller, possible loss of data
+         
+         compilation object save succeeded; see C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\light.cso
+         C:\Program Files (x86)\Windows Kits\10\bin\x86\fxc.exe /nologo /E"main" /T ps_5_0 /Fo "C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\reflection.cso" /Od /Zi Content\shaders\reflection.hlsl 
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(94,20-68): warning X3205: 'sin': conversion from larger type to smaller, possible loss of data
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(94,15-89): warning X3205: 'frac': conversion from larger type to smaller, possible loss of data
+         
+         compilation object save succeeded; see C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\reflection.cso
+         C:\Program Files (x86)\Windows Kits\10\bin\x86\fxc.exe /nologo /E"main" /T ps_5_0 /Fo "C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\refraction.cso" /Od /Zi Content\shaders\refraction.hlsl 
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(94,20-68): warning X3205: 'sin': conversion from larger type to smaller, possible loss of data
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(94,15-89): warning X3205: 'frac': conversion from larger type to smaller, possible loss of data
+         
+         compilation object save succeeded; see C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\refraction.cso
+         C:\Program Files (x86)\Windows Kits\10\bin\x86\fxc.exe /nologo /E"main" /T ps_5_0 /Fo "C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\render.cso" /Od /Zi Content\shaders\render.hlsl 
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(94,20-68): warning X3205: 'sin': conversion from larger type to smaller, possible loss of data
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(94,15-89): warning X3205: 'frac': conversion from larger type to smaller, possible loss of data
+         
+         compilation object save succeeded; see C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\render.cso
+         C:\Program Files (x86)\Windows Kits\10\bin\x86\fxc.exe /nologo /E"main" /T ps_5_0 /Fo "C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\reset.cso" /Od /Zi reset.hlsl 
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(94,20-68): warning X3205: 'sin': conversion from larger type to smaller, possible loss of data
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(94,15-89): warning X3205: 'frac': conversion from larger type to smaller, possible loss of data
+         
+         compilation object save succeeded; see C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\reset.cso
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /IC:\Users\acterhd\Documents\C++\DirectXApp\ /Ix64\Debug\ /IC:\Users\acterhd\Documents\C++\DirectXApp\ /I"Generated Files\\" /Ix64\Debug\ /ZI /ZW /ZW:nostdlib /nologo /W3 /WX- /sdl /MP /Od /Oy- /D _DEBUG /D _UNICODE /D UNICODE /D _DEBUG /D WINAPI_FAMILY=WINAPI_FAMILY_APP /D __WRL_NO_DEFAULT_LIB__ /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"pch.h" /Fp"x64\Debug\pch.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc140.pdb" /Gd /TP /wd4453 /wd28204 /wd4267 /FU"C:\Program Files (x86)\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\References\CommonConfiguration\neutral\platform.winmd" /FU"C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.FoundationContract\1.0.0.0\Windows.Foundation.FoundationContract.winmd" /FU"C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.UniversalApiContract\1.0.0.0\Windows.Foundation.UniversalApiContract.winmd" /FU"C:\Program Files (x86)\Windows Kits\10\References\Windows.Networking.Connectivity.WwanContract\1.0.0.0\Windows.Networking.Connectivity.WwanContract.winmd" /analyze- /errorReport:prompt /bigobj App.cpp Content\Sample3DSceneRenderer.cpp DirectXAppMain.cpp
+         App.cpp
          Sample3DSceneRenderer.cpp
+         DirectXAppMain.cpp
      1>c:\users\acterhd\documents\c++\directxapp\content\sample3dscenerenderer.cpp(93): warning C4018: <: несоответствие типов со знаком и без знака
      1>c:\users\acterhd\documents\c++\directxapp\content\sample3dscenerenderer.cpp(448): warning C4018: <: несоответствие типов со знаком и без знака
      1>c:\users\acterhd\documents\c++\directxapp\content\sample3dscenerenderer.cpp(600): warning C4305: =: усечение из "double" к "float"
@@ -18,4 +76,4 @@
 
 Сборка успешно завершена.
 
-Затраченное время: 00:00:04.16
+Затраченное время: 00:00:07.80

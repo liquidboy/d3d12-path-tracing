@@ -56,6 +56,8 @@ namespace DirectXApp
 
 		unsigned index;
 		unsigned prev;
+
+		unsigned applyed;
 	};
 
 	struct Hit {

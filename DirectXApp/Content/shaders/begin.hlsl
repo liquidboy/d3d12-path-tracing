@@ -14,6 +14,7 @@ float4 main(PixelShaderInput input) : SV_TARGET
 		hit.meshID = 0; //Null mesh
 		hit.normal = float3(0.0, 0.0, 0.0);
 		hits[index] = hit;
+		rays[index].applyed = 0;
 		index = rays[index].prev;
 		counter++;
 	}

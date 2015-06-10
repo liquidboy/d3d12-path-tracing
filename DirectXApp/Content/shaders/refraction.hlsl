@@ -20,7 +20,7 @@ float4 main(PixelShaderInput input) : SV_TARGET
 
 	int counter = 0;
 	while (counter < 10 && index != 0xFFFFFFFF) {
-		if (rays[index].active == 1 && hits[index].meshID == primitiveID) {
+		if (rays[index].applyed == 0 && rays[index].active == 1 && hits[index].meshID == primitiveID) {
 			rays[index].origin += rays[index].direct * hits[index].distance;
 
 			float inIor = 1.0;
@@ -47,6 +47,7 @@ float4 main(PixelShaderInput input) : SV_TARGET
 			}
 
 			rays[index].origin += normalize(dot(rays[index].direct, hits[index].normal) * hits[index].normal) * 0.0001f;
+			rays[index].applyed = 1;
 		}
 		index = rays[index].prev;
 		counter++;
