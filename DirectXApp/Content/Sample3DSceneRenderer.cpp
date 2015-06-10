@@ -569,12 +569,12 @@ void Sample3DSceneRenderer::Render()
 			useProgram(8);
 		}
 
-		//Generate camera
-		useProgram(11);
-
+		//Reset counter
 		counter = 0;
 		memcpy(m_mappedHeaderBufferCounter, &counter, sizeof(unsigned));
+		useProgram(11);
 
+		//Generate camera
 		useProgram(0);
 
 		for (int i = 0;i < 8;i++) {
