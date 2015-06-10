@@ -51,11 +51,16 @@ namespace DirectXApp
 		Microsoft::WRL::ComPtr<ID3D12Resource>				m_verticeBuffer;
 		Microsoft::WRL::ComPtr<ID3D12Resource>				m_indiceBuffer;
 
+		Microsoft::WRL::ComPtr<ID3D12Resource>				m_headerBuffer;
+		Microsoft::WRL::ComPtr<ID3D12Resource>				m_headerBufferCounter;
+
+		UINT8* m_mappedHeaderBufferCounter;
+		unsigned counter = 0;
+
+
+
 		Microsoft::WRL::ComPtr<ID3D12Resource>				verticeBufferUpload;
 		Microsoft::WRL::ComPtr<ID3D12Resource>				indiceBufferUpload;
-
-		void verticeUpload(Vertice * triangles, int count);
-		void indiceUpload(Indice * indices, int count);
 
 		ModelViewProjectionConstantBuffer					m_constantBufferData;
 		UINT8*												m_mappedConstantBuffer;
@@ -77,8 +82,7 @@ namespace DirectXApp
 		unsigned iterations = 0;
 		unsigned shaderCount = 0;
 
-		unsigned counter = 0;
-		
+		bool first = true;
 
 		// Variables used with the rendering loop.
 		bool	m_loadingComplete;

@@ -53,6 +53,9 @@ namespace DirectXApp
 		DirectX::XMFLOAT3 final;
 		unsigned active;
 		int iorIdx;
+
+		unsigned index;
+		unsigned prev;
 	};
 
 	struct Hit {

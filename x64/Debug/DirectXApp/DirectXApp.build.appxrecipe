@@ -79,6 +79,9 @@
     <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\quad.cso">
       <PackagePath>quad.cso</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\reset.cso">
+      <PackagePath>reset.cso</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>

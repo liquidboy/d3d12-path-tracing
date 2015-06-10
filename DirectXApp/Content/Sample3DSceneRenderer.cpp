@@ -86,7 +86,7 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources()
 	Concurrency::task<void> createTask[20];
 	Concurrency::task<void> loadTask[20];
 
-	std::wstring shaders[] = { L"camera.cso", L"begin.cso", L"intersection.cso", L"background.cso", L"diffuse.cso", L"light.cso",L"final.cso", L"render.cso", L"clear.cso", L"refraction.cso", L"reflection.cso" };
+	std::wstring shaders[] = { L"camera.cso", L"begin.cso", L"intersection.cso", L"background.cso", L"diffuse.cso", L"light.cso",L"final.cso", L"render.cso", L"clear.cso", L"refraction.cso", L"reflection.cso", L"reset.cso" };
 	shaderCount = _countof(shaders);
 
 	int it;
@@ -106,7 +106,7 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources()
 			};
 
 			{
-				CD3DX12_DESCRIPTOR_RANGE range[6];
+				CD3DX12_DESCRIPTOR_RANGE range[7];
 				CD3DX12_ROOT_PARAMETER parameter[1];
 
 				range[0].Init(D3D12_DESCRIPTOR_RANGE_TYPE_CBV, 1, 0);
@@ -115,6 +115,7 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources()
 				range[3].Init(D3D12_DESCRIPTOR_RANGE_TYPE_UAV, 1, 3);
 				range[4].Init(D3D12_DESCRIPTOR_RANGE_TYPE_UAV, 1, 4);
 				range[5].Init(D3D12_DESCRIPTOR_RANGE_TYPE_UAV, 1, 5);
+				range[6].Init(D3D12_DESCRIPTOR_RANGE_TYPE_UAV, 1, 6);
 				parameter[0].InitAsDescriptorTable(_countof(range), range, D3D12_SHADER_VISIBILITY_ALL);
 
 				CD3DX12_ROOT_SIGNATURE_DESC descRootSignature;
@@ -392,6 +393,42 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources()
 
 
 
+		//////////////////////////Header UAV//////////////////////////
+		D3D12_UNORDERED_ACCESS_VIEW_DESC headerDesc(uavDescSource);
+		{
+			CD3DX12_RESOURCE_DESC resourceDesc(resourceDescSource);
+			resourceDesc.Buffer(rayCount * sizeof(unsigned));
+			resourceDesc.Width = rayCount * sizeof(unsigned);
+
+			DX::ThrowIfFailed(d3dDevice->CreateCommittedResource(&CD3DX12_HEAP_PROPERTIES(D3D12_HEAP_TYPE_DEFAULT), D3D12_HEAP_FLAG_NONE, &resourceDesc, D3D12_RESOURCE_STATE_COPY_DEST, nullptr, IID_PPV_ARGS(&m_headerBuffer)));
+			m_headerBuffer->SetName(L"Hit Buffer");
+			m_commandList->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(m_headerBuffer.Get(), D3D12_RESOURCE_STATE_COPY_DEST, D3D12_RESOURCE_STATE_UNORDERED_ACCESS));
+
+			D3D12_BUFFER_UAV bufferDesc(bufferDescSource);
+			bufferDesc.NumElements = rayCount;
+			bufferDesc.StructureByteStride = sizeof(unsigned);
+
+			headerDesc.Buffer = bufferDesc;
+		}
+
+		//Counter
+		{
+			CD3DX12_RESOURCE_DESC resourceDesc(resourceDescSource);
+			resourceDesc.Buffer(sizeof(unsigned));
+			resourceDesc.Width = sizeof(unsigned);
+
+			DX::ThrowIfFailed(d3dDevice->CreateCommittedResource(&CD3DX12_HEAP_PROPERTIES(D3D12_HEAP_TYPE_UPLOAD), D3D12_HEAP_FLAG_NONE, &resourceDesc, D3D12_RESOURCE_STATE_GENERIC_READ, nullptr, IID_PPV_ARGS(&m_headerBufferCounter)));
+			m_headerBufferCounter->SetName(L"Counter Buffer");
+
+			DX::ThrowIfFailed(m_headerBufferCounter->Map(0, nullptr, reinterpret_cast<void**>(&m_mappedHeaderBufferCounter)));
+			memcpy(m_mappedHeaderBufferCounter, &counter, sizeof(unsigned));
+		}
+
+
+
+
+
+
 		//////////////////////EXECUTE UPLOADING///////////////////////
 
 		DX::ThrowIfFailed(m_commandList->Close());
@@ -410,15 +447,16 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources()
 
 		for (int i = 0;i < shaderCount;i++) {
 			////////////////////// VIEWS AND HEAPS (Shader 0) ////////////////
-			m_cbvHeap[i].Create(d3dDevice, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV, 6, true);
+			m_cbvHeap[i].Create(d3dDevice, D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV, 7, true);
 			m_cbvHeap[i].pDH->SetName(L"Heap");
 
 			d3dDevice->CreateConstantBufferView(&desc, m_cbvHeap[i].hCPUHeapStart);
-			d3dDevice->CreateUnorderedAccessView(m_rayBuffer.Get(), nullptr, &raysDesc, m_cbvHeap[i].hCPU(1)); //Rays
-			d3dDevice->CreateUnorderedAccessView(m_hitBuffer.Get(), nullptr, &hitsDesc, m_cbvHeap[i].hCPU(2)); //Rays
-			d3dDevice->CreateUnorderedAccessView(m_seedBuffer.Get(), nullptr, &seedDesc, m_cbvHeap[i].hCPU(3)); //Seed
-			d3dDevice->CreateUnorderedAccessView(m_verticeBuffer.Get(), nullptr, &verticeDesc, m_cbvHeap[i].hCPU(4)); //Seed
-			d3dDevice->CreateUnorderedAccessView(m_indiceBuffer.Get(), nullptr, &indiceDesc, m_cbvHeap[i].hCPU(5)); //Seed
+			d3dDevice->CreateUnorderedAccessView(m_rayBuffer.Get(), nullptr, &raysDesc, m_cbvHeap[i].hCPU(1)); 
+			d3dDevice->CreateUnorderedAccessView(m_hitBuffer.Get(), nullptr, &hitsDesc, m_cbvHeap[i].hCPU(2));
+			d3dDevice->CreateUnorderedAccessView(m_seedBuffer.Get(), nullptr, &seedDesc, m_cbvHeap[i].hCPU(3)); 
+			d3dDevice->CreateUnorderedAccessView(m_verticeBuffer.Get(), nullptr, &verticeDesc, m_cbvHeap[i].hCPU(4));
+			d3dDevice->CreateUnorderedAccessView(m_indiceBuffer.Get(), nullptr, &indiceDesc, m_cbvHeap[i].hCPU(5)); 
+			d3dDevice->CreateUnorderedAccessView(m_headerBuffer.Get(), m_headerBufferCounter.Get(), &headerDesc, m_cbvHeap[i].hCPU(6)); 
 
 			ppCbvHeapsReserve[i] = m_cbvHeap[i].pDH.Get();
 
@@ -522,94 +560,100 @@ void Sample3DSceneRenderer::Render()
 		return;
 	}
 
-	if (resized) {
-		resized = false;
-		iterations = 0;
-		useProgram(8);
+	if (first) {
+		//first = false;
+
+		if (resized) {
+			resized = false;
+			iterations = 0;
+			useProgram(8);
+		}
+
+		//Generate camera
+		useProgram(11);
+
+		counter = 0;
+		memcpy(m_mappedHeaderBufferCounter, &counter, sizeof(unsigned));
+		useProgram(0);
+
+		for (int i = 0;i < 8;i++) {
+			useProgram(1);
+
+
+			m_constantBufferData.origin = { 0.0f, -1.0f, 0.0f };
+			m_constantBufferData.normal = { 0.0f, 1.0f, 0.0f };
+			m_constantBufferData.primitiveType = 1;
+			m_constantBufferData.primitiveID = 1;
+			memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
+			useProgram(2); //Interection shader (diffuse plane)
+
+			m_constantBufferData.origin = { 1.0f, 0.0f, 0.0f };
+			m_constantBufferData.radius = 0.5;
+			m_constantBufferData.primitiveType = 0;
+			m_constantBufferData.primitiveID = 2;
+			memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
+			useProgram(2); //Interection shader (sphere)
+
+
+			m_constantBufferData.origin = { 0.0f, 0.0f, 2.0f };
+			m_constantBufferData.radius = 0.9;
+			m_constantBufferData.primitiveType = 0;
+			m_constantBufferData.primitiveID = 3;
+			memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
+			useProgram(2); //Interection shader (sphere)
+
+			m_constantBufferData.origin = { 0.0f, 0.0f, -2.0f };
+			m_constantBufferData.radius = 0.9;
+			m_constantBufferData.primitiveType = 0;
+			m_constantBufferData.primitiveID = 4;
+			memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
+			useProgram(2); //Interection shader (sphere)
+
+			m_constantBufferData.origin = { 0.0f, 2.0f, 1.0f };
+			m_constantBufferData.count = 36 / 3;
+			m_constantBufferData.primitiveType = 2;
+			m_constantBufferData.primitiveID = 5;
+			memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
+			useProgram(2); //Interection shader (polygon)
+
+			useProgram(3); //Background shader
+
+			m_constantBufferData.primitiveID = 1;
+			m_constantBufferData.mcolor = { 1.0f, 1.0f, 1.0f };
+			memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
+			useProgram(4); //Diffuse shader
+
+			m_constantBufferData.primitiveID = 2;
+			memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
+			useProgram(5); //Light shader
+
+
+			m_constantBufferData.primitiveID = 3;
+			m_constantBufferData.mcolor = { 0.9f, 0.2f, 0.2f };
+			memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
+			useProgram(4); //Diffuse shader
+
+			m_constantBufferData.primitiveID = 4;
+			m_constantBufferData.mcolor = { 1.0f, 1.0f, 1.0f };
+			memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
+			//useProgram(4); //Diffuse shader
+			useProgram(9); //Refraction shader
+
+			m_constantBufferData.primitiveID = 5;
+			m_constantBufferData.mcolor = { 0.1f, 0.9f, 0.1f };
+			memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
+			useProgram(4); //Diffuse shader
+
+
+		}
+
+		useProgram(6); //Accumulation
+
+		iterations++;
+		m_constantBufferData.iterations = iterations;
+		memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
+		useProgram(7); //Render
 	}
-
-	//counter = 0;
-	//memcpy(m_iorBufferCounterMapped, &counter, sizeof(counter));
-
-	useProgram(0);
-	
-	for (int i = 0;i < 8;i++) {
-		useProgram(1);
-
-		
-		m_constantBufferData.origin = { 0.0f, -1.0f, 0.0f };
-		m_constantBufferData.normal = { 0.0f, 1.0f, 0.0f };
-		m_constantBufferData.primitiveType = 1;
-		m_constantBufferData.primitiveID = 1;
-		memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
-		useProgram(2); //Interection shader (diffuse plane)
-		
-		m_constantBufferData.origin = { 1.0f, 0.0f, 0.0f };
-		m_constantBufferData.radius = 0.5;
-		m_constantBufferData.primitiveType = 0;
-		m_constantBufferData.primitiveID = 2;
-		memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
-		useProgram(2); //Interection shader (sphere)
-
-		
-		m_constantBufferData.origin = { 0.0f, 0.0f, 2.0f };
-		m_constantBufferData.radius = 0.9;
-		m_constantBufferData.primitiveType = 0;
-		m_constantBufferData.primitiveID = 3;
-		memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
-		useProgram(2); //Interection shader (sphere)
-
-		m_constantBufferData.origin = { 0.0f, 0.0f, -2.0f };
-		m_constantBufferData.radius = 0.9;
-		m_constantBufferData.primitiveType = 0;
-		m_constantBufferData.primitiveID = 4;
-		memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
-		useProgram(2); //Interection shader (sphere)
-		
-		m_constantBufferData.origin = { 0.0f, 2.0f, 1.0f };
-		m_constantBufferData.count = 36 / 3;
-		m_constantBufferData.primitiveType = 2;
-		m_constantBufferData.primitiveID = 5;
-		memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
-		useProgram(2); //Interection shader (polygon)
-
-		useProgram(3); //Background shader
-		
-		m_constantBufferData.primitiveID = 1;
-		m_constantBufferData.mcolor = { 1.0f, 1.0f, 1.0f };
-		memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
-		useProgram(4); //Diffuse shader
-		
-		m_constantBufferData.primitiveID = 2;
-		memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
-		useProgram(5); //Light shader
-
-		
-		m_constantBufferData.primitiveID = 3;
-		m_constantBufferData.mcolor = { 0.9f, 0.2f, 0.2f };
-		memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
-		useProgram(4); //Diffuse shader
-
-		m_constantBufferData.primitiveID = 4;
-		m_constantBufferData.mcolor = { 1.0f, 1.0f, 1.0f };
-		memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
-		//useProgram(4); //Diffuse shader
-		useProgram(9); //Refraction shader
-
-		m_constantBufferData.primitiveID = 5;
-		m_constantBufferData.mcolor = { 0.1f, 0.9f, 0.1f };
-		memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
-		useProgram(4); //Diffuse shader
-
-		
-	}
-	
-	useProgram(6); //Accumulation
-
-	iterations++;
-	m_constantBufferData.iterations = iterations;
-	memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
-	useProgram(7); //Render
 }
 
 

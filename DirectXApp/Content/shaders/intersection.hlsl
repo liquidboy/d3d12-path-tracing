@@ -118,31 +118,37 @@ float intersectMesh(in Ray ray, out float3 normal) {
 float4 main(PixelShaderInput input) : SV_TARGET
 {
 	float2 normalized = input.origin * 0.5 + 0.5;
-	uint2 intPos = uint2(floor(normalized * float2(resolution)));
-	uint index = resolution.x * intPos.y + intPos.x;
+	uint2 intPos = uint2(round(normalized * float2(resolution)-0.5));
+	uint _index = resolution.x * intPos.y + intPos.x;
+	uint index = headers[_index].i;
 
-	if (rays[index].active == 1) {
-		float distance = 10000.0f;
-		float3 _normal = float3(0.0, 0.0, 0.0);
-		if (primitiveType == 0) {
-			distance = intersectSphere(rays[index], radius, origin);
-			_normal = normalDSphere(distance, rays[index], origin);
-		}
-		else
-			if (primitiveType == 1) {
-				distance = intersectPlane(rays[index], normal, origin);
-				_normal = normal;
+	int counter = 0;
+	while (counter < 10 && index != 0xFFFFFFFF) {
+		if (rays[index].active == 1) {
+			float distance = 10000.0f;
+			float3 _normal = float3(0.0, 0.0, 0.0);
+			if (primitiveType == 0) {
+				distance = intersectSphere(rays[index], radius, origin);
+				_normal = normalDSphere(distance, rays[index], origin);
 			}
 			else
-				if (primitiveType == 2) {
-					distance = intersectMesh(rays[index], _normal);
+				if (primitiveType == 1) {
+					distance = intersectPlane(rays[index], normal, origin);
+					_normal = normal;
 				}
+				else
+					if (primitiveType == 2) {
+						distance = intersectMesh(rays[index], _normal);
+					}
 
-		if (distance > 0.0 && distance < hits[index].distance) {
-			hits[index].distance = distance;
-			hits[index].normal = _normal;
-			hits[index].meshID = primitiveID;
+			if (distance > 0.0 && distance < hits[index].distance) {
+				hits[index].distance = distance;
+				hits[index].normal = _normal;
+				hits[index].meshID = primitiveID;
+			}
 		}
+		index = rays[index].prev;
+		counter++;
 	}
 
 	return float4(0.0, 0.0, 0.0, 0.0);

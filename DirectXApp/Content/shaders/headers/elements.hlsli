@@ -16,6 +16,9 @@ struct Ray {
 	float3 final;
 	int active;
 	int iorIdx;
+
+	uint index;
+	uint prev;
 };
 
 struct Vertice {
@@ -33,11 +36,16 @@ struct Typed {
 	uint seed;
 };
 
+struct Head {
+	uint i;
+};
+
 RWStructuredBuffer <Ray> rays : register(u1);
 RWStructuredBuffer <Hit> hits : register(u2);
 RWStructuredBuffer <Typed> accum : register(u3);
 RWStructuredBuffer <Vertice> vertices : register(u4);
 RWStructuredBuffer <Indice> indices : register(u5);
+RWStructuredBuffer <Head> headers : register(u6);
 
 struct PixelShaderInput
 {

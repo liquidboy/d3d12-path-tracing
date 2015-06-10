@@ -1,16 +1,11 @@
-﻿Сборка начата 10.06.2015 23:06:17.
+﻿Сборка начата 11.06.2015 0:37:32.
      1>Проект "C:\Users\acterhd\Documents\C++\DirectXApp\DirectXApp.vcxproj" в узле 2 (целевые объекты Build).
      1>FxCompile:
-         C:\Program Files (x86)\Windows Kits\10\bin\x86\fxc.exe /nologo /E"main" /T ps_5_0 /Fo "C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\intersection.cso" /Od /Zi Content\shaders\intersection.hlsl 
-     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(84,20-68): warning X3205: 'sin': conversion from larger type to smaller, possible loss of data
-     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(84,15-89): warning X3205: 'frac': conversion from larger type to smaller, possible loss of data
-     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\intersection.hlsl(93,17-25): warning X3203: signed/unsigned mismatch, unsigned assumed
-     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\intersection.hlsl(16,29): warning X4000: use of potentially uninitialized variable (intersectSphere)
-     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\intersection.hlsl(25,2): warning X4000: use of potentially uninitialized variable (t)
-     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\intersection.hlsl(8,26): warning X4000: use of potentially uninitialized variable (intersectPlane)
-     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\intersection.hlsl(64,2): warning X4000: use of potentially uninitialized variable (intersectTriangle)
+         C:\Program Files (x86)\Windows Kits\10\bin\x86\fxc.exe /nologo /E"main" /T ps_5_0 /Fo "C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\camera.cso" /Od /Zi Content\shaders\camera.hlsl 
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(92,20-68): warning X3205: 'sin': conversion from larger type to smaller, possible loss of data
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(92,15-89): warning X3205: 'frac': conversion from larger type to smaller, possible loss of data
          
-         compilation object save succeeded; see C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\intersection.cso
+         compilation object save succeeded; see C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\camera.cso
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\DirectXApp.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\\lib\store\amd64" /LIBPATH:"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\\lib\amd64" d3d12.lib dxgi.lib WindowsApp.lib /MANIFEST:NO /DEBUG:FASTLINK /PDB:"C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\DirectXApp.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /APPCONTAINER /WINMD /WINMDFILE:"C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\DirectXApp.winmd" /DYNAMICBASE /NXCOMPAT /MACHINE:X64 x64\Debug\App.obj
          x64\Debug\DeviceResources.obj
@@ -22,4 +17,4 @@
 
 Сборка успешно завершена.
 
-Затраченное время: 00:00:01.24
+Затраченное время: 00:00:00.57

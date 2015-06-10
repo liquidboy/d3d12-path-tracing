@@ -122,5 +122,8 @@
     <FxCompile Include="Content\shaders\vertex\quad.hlsl">
       <Filter>Content\shaders\vertex</Filter>
     </FxCompile>
+    <FxCompile Include="reset.hlsl">
+      <Filter>Content\shaders</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

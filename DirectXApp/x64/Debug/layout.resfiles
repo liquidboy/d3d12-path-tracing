@@ -15,5 +15,6 @@ quad.cso
 reflection.cso
 refraction.cso
 render.cso
+reset.cso
 SamplePixelShader.cso
 SampleVertexShader.cso
