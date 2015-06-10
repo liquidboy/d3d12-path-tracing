@@ -1,0 +1,14 @@
+﻿Сборка начата 10.06.2015 0:13:33.
+     1>Проект "C:\Users\acterhd\OneDrive\DirectX12Test\DirectXApp\DirectXApp.vcxproj" в узле 2 (целевые объекты Build).
+     1>Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\acterhd\OneDrive\DirectX12Test\x64\Debug\DirectXApp\DirectXApp.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\\lib\store\amd64" /LIBPATH:"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\\lib\amd64" d3d12.lib dxgi.lib WindowsApp.lib /MANIFEST:NO /DEBUG:FASTLINK /PDB:"C:\Users\acterhd\OneDrive\DirectX12Test\x64\Debug\DirectXApp\DirectXApp.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /APPCONTAINER /WINMD /WINMDFILE:"C:\Users\acterhd\OneDrive\DirectX12Test\x64\Debug\DirectXApp\DirectXApp.winmd" /DYNAMICBASE /NXCOMPAT /MACHINE:X64 x64\Debug\App.obj
+         x64\Debug\DeviceResources.obj
+         x64\Debug\DirectXAppMain.obj
+         x64\Debug\Sample3DSceneRenderer.obj
+         x64\Debug\pch.obj
+         DirectXApp.vcxproj -> C:\Users\acterhd\OneDrive\DirectX12Test\x64\Debug\DirectXApp\DirectXApp.exe
+     1>Сборка проекта "C:\Users\acterhd\OneDrive\DirectX12Test\DirectXApp\DirectXApp.vcxproj" завершена (целевые объекты Build).
+
+Сборка успешно завершена.
+
+Затраченное время: 00:00:02.08
