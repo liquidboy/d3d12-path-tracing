@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>WIN-Q8AA8F0MRL7</Machine>
+    <WindowsUser>acterhd</WindowsUser>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <SolutionConfiguration>Debug|x64</SolutionConfiguration>
+    <PackageArchitecture>x64</PackageArchitecture>
+    <PackageIdentityName>783069b3-6e09-4cb8-b7a4-e43f99d161e6</PackageIdentityName>
+    <IntermediateOutputPath>C:\Users\acterhd\Documents\C++\DirectXApp\x64\Debug\</IntermediateOutputPath>
+    <RegisteredManifestChecksum>FBDA31FBCC1806BAB42198B74742B2FC6ED1C1C2ED91EAC5F461B467C581BBE5</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>Microsoft.SDKSamples.DirectX12Sample.CPP_1.0.0.0_x64__255jqadzvympc</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>Microsoft.SDKSamples.DirectX12Sample.CPP_255jqadzvympc!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>Microsoft.SDKSamples.DirectX12Sample.CPP</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=bobbrow</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.0.0</RegisteredVersion>
+    <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2015-06-10T12:42:50.269</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\DirectXApp.exe">
+      <PackagePath>DirectXApp.exe</PackagePath>
+      <Modified>2015-06-10T12:42:49.748</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\DirectXApp.winmd">
+      <PackagePath>DirectXApp.winmd</PackagePath>
+      <Modified>2015-06-10T12:42:50.380</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\DirectXApp\Assets\Logo.scale-100.png">
+      <PackagePath>Assets\Logo.scale-100.png</PackagePath>
+      <Modified>2015-06-10T12:38:40.665</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\DirectXApp\Assets\SmallLogo.scale-100.png">
+      <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
+      <Modified>2015-06-10T12:38:40.737</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\DirectXApp\Assets\StoreLogo.scale-100.png">
+      <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
+      <Modified>2015-06-10T12:38:40.764</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\DirectXApp\Assets\SplashScreen.scale-100.png">
+      <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
+      <Modified>2015-06-10T12:38:40.750</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\DirectXApp\Assets\WideLogo.scale-100.png">
+      <PackagePath>Assets\WideLogo.scale-100.png</PackagePath>
+      <Modified>2015-06-10T12:38:40.779</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\SamplePixelShader.cso">
+      <PackagePath>SamplePixelShader.cso</PackagePath>
+      <Modified>2015-06-10T12:41:43.621</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\SampleVertexShader.cso">
+      <PackagePath>SampleVertexShader.cso</PackagePath>
+      <Modified>2015-06-10T12:41:43.703</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\background.cso">
+      <PackagePath>background.cso</PackagePath>
+      <Modified>2015-06-10T12:42:41.165</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\begin.cso">
+      <PackagePath>begin.cso</PackagePath>
+      <Modified>2015-06-10T12:42:41.253</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\camera.cso">
+      <PackagePath>camera.cso</PackagePath>
+      <Modified>2015-06-10T12:42:41.354</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\clear.cso">
+      <PackagePath>clear.cso</PackagePath>
+      <Modified>2015-06-10T12:42:41.444</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\diffuse.cso">
+      <PackagePath>diffuse.cso</PackagePath>
+      <Modified>2015-06-10T12:42:41.551</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\final.cso">
+      <PackagePath>final.cso</PackagePath>
+      <Modified>2015-06-10T12:42:41.637</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\intersection.cso">
+      <PackagePath>intersection.cso</PackagePath>
+      <Modified>2015-06-10T12:42:41.762</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\light.cso">
+      <PackagePath>light.cso</PackagePath>
+      <Modified>2015-06-10T12:42:41.869</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\reflection.cso">
+      <PackagePath>reflection.cso</PackagePath>
+      <Modified>2015-06-10T12:42:41.968</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\refraction.cso">
+      <PackagePath>refraction.cso</PackagePath>
+      <Modified>2015-06-10T12:42:42.080</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\render.cso">
+      <PackagePath>render.cso</PackagePath>
+      <Modified>2015-06-10T12:42:42.171</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\quad.cso">
+      <PackagePath>quad.cso</PackagePath>
+      <Modified>2015-06-10T12:42:42.255</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2015-06-10T12:42:50.211</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00.Debug</Name>
+      <Version>14.0.0.0</Version>
+      <Architecture>ARM</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.0.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\ARM\Microsoft.VCLibs.ARM.Debug.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00.Debug</Name>
+      <Version>14.0.0.0</Version>
+      <Architecture>x64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.0.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x64\Microsoft.VCLibs.x64.Debug.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00.Debug</Name>
+      <Version>14.0.0.0</Version>
+      <Architecture>x86</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.0.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x86\Microsoft.VCLibs.x86.Debug.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+  </ItemGroup>
+</Project>

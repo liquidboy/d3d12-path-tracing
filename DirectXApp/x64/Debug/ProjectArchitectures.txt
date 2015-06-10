@@ -1,0 +1,1 @@
+C:\Users\acterhd\Documents\C++\DirectXApp\DirectXApp.vcxproj;x64
