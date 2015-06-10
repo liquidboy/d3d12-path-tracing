@@ -574,6 +574,7 @@ void Sample3DSceneRenderer::Render()
 
 		counter = 0;
 		memcpy(m_mappedHeaderBufferCounter, &counter, sizeof(unsigned));
+
 		useProgram(0);
 
 		for (int i = 0;i < 8;i++) {
