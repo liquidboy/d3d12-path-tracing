@@ -38,11 +38,16 @@ float3 normalDSphere(in float distance, in Ray ray, in float3 origin) {
 }
 
 
-float intersectTriangle(in Ray ray, in float3 vertices[3], out float3 normal){
+float intersectTriangle(in Ray ray, in float3 _vertices[3], out float3 normal){
 	const float INFINITY = 1e10;
 	float3 u, v, n; // triangle floattors
 	float3 w0, w;  // ray floattors
 	float r, a, b; 
+
+	float3 vertices[3];
+	vertices[0] = _vertices[0] + origin;
+	vertices[1] = _vertices[1] + origin;
+	vertices[2] = _vertices[2] + origin;
 
 	u = vertices[1] - vertices[0];
 	v = vertices[2] - vertices[0];

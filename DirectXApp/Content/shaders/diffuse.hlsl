@@ -9,7 +9,9 @@ float4 main(PixelShaderInput input) : SV_TARGET
 
 	if (rays[index].active == 1 && hits[index].meshID == primitiveID) {
 		rays[index].origin += rays[index].direct * hits[index].distance;
-		rays[index].direct = randomCosineWeightedDirectionInHemisphere(hits[index].normal, index);
+
+		float3 normalized = -normalize(dot(rays[index].direct, hits[index].normal) * hits[index].normal);
+		rays[index].direct = randomCosineWeightedDirectionInHemisphere(normalized, index);
 		rays[index].color *= pow(mcolor, 2.2);
 
 		rays[index].origin += normalize(dot(rays[index].direct, hits[index].normal) * hits[index].normal) * 0.0001f;

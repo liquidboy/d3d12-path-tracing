@@ -9,7 +9,9 @@ float4 main(PixelShaderInput input) : SV_TARGET
 
 	if (rays[index].active == 1 && hits[index].meshID == primitiveID) {
 		rays[index].origin += rays[index].direct * hits[index].distance;
-		rays[index].direct = reflect(rays[index].direct, hits[index].normal);
+
+		float3 normalized = -normalize(dot(rays[index].direct, hits[index].normal) * hits[index].normal);
+		rays[index].direct = reflect(rays[index].direct, normalized);
 
 		rays[index].origin += normalize(dot(rays[index].direct, hits[index].normal) * hits[index].normal) * 0.0001f;
 	}

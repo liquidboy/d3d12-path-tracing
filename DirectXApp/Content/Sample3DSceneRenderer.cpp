@@ -294,24 +294,47 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources()
 
 			seedDesc.Buffer = bufferDesc;
 		}
+		
+		Vertice vertices[] =
+		{
+			{ XMFLOAT3(-0.5f, -0.5f, -0.5f) },
+			{ XMFLOAT3(-0.5f, -0.5f,  0.5f) },
+			{ XMFLOAT3(-0.5f,  0.5f, -0.5f) },
+			{ XMFLOAT3(-0.5f,  0.5f,  0.5f) },
+			{ XMFLOAT3(0.5f, -0.5f, -0.5f) },
+			{ XMFLOAT3(0.5f, -0.5f,  0.5f) },
+			{ XMFLOAT3(0.5f,  0.5f, -0.5f) },
+			{ XMFLOAT3(0.5f,  0.5f,  0.5f) }
+		};
 
+		
+		Indice indices[] =
+		{
+			{ 0,2,1 }, // -x
+			{ 1,2,3 },
 
-		Vertice vertices[3];
-		vertices[0].v0 = { 1.0, 1.0, -1.0 };
-		vertices[1].v0 = { 1.0, 1.0, 1.0 };
-		vertices[2].v0 = { 1.0, 2.0, 0.0 };
+			{ 4,5,6 }, // +x
+			{ 5,7,6 },
 
-		Indice indices[1];
-		indices[0].i0 = 0;
-		indices[0].i1 = 1;
-		indices[0].i2 = 2;
+			{ 0,1,5 }, // -y
+			{ 0,5,4 },
+
+			{ 2,6,7 }, // +y
+			{ 2,7,3 },
+
+			{ 0,4,6 }, // -z
+			{ 0,6,2 },
+
+			{ 1,3,7 }, // +z
+			{ 1,7,5 }
+		};
 
 		/////////////////////// TRIANGLES UAV /////////////////////
 		D3D12_UNORDERED_ACCESS_VIEW_DESC verticeDesc(uavDescSource);
 		{
 			CD3DX12_RESOURCE_DESC resourceDesc(resourceDescSource);
-			resourceDesc.Buffer(_countof(vertices) * sizeof(Vertice));
-			resourceDesc.Width = _countof(vertices) * sizeof(Vertice);
+			resourceDesc.Buffer(sizeof(vertices));
+			resourceDesc.Width = sizeof(vertices);
 
 			DX::ThrowIfFailed(d3dDevice->CreateCommittedResource(&CD3DX12_HEAP_PROPERTIES(D3D12_HEAP_TYPE_DEFAULT), D3D12_HEAP_FLAG_NONE, &resourceDesc, D3D12_RESOURCE_STATE_COPY_DEST, nullptr, IID_PPV_ARGS(&m_verticeBuffer)));
 			m_verticeBuffer->SetName(L"Vertice Buffer");
@@ -340,8 +363,8 @@ void Sample3DSceneRenderer::CreateDeviceDependentResources()
 		D3D12_UNORDERED_ACCESS_VIEW_DESC indiceDesc(uavDescSource);
 		{
 			CD3DX12_RESOURCE_DESC resourceDesc(resourceDescSource);
-			resourceDesc.Buffer(_countof(indices) * sizeof(Indice));
-			resourceDesc.Width = _countof(indices) * sizeof(Indice);
+			resourceDesc.Buffer(sizeof(indices));
+			resourceDesc.Width = sizeof(indices);
 
 			DX::ThrowIfFailed(d3dDevice->CreateCommittedResource(&CD3DX12_HEAP_PROPERTIES(D3D12_HEAP_TYPE_DEFAULT), D3D12_HEAP_FLAG_NONE, &resourceDesc, D3D12_RESOURCE_STATE_COPY_DEST, nullptr, IID_PPV_ARGS(&m_indiceBuffer)));
 			m_indiceBuffer->SetName(L"Indice Buffer");
@@ -437,8 +460,8 @@ void Sample3DSceneRenderer::CreateWindowSizeDependentResources()
 	XMMATRIX perspectiveMatrix = XMMatrixPerspectiveFovRH(fovAngleY, aspectRatio, 0.0001f, 10000.0f);
 	XMStoreFloat4x4(&m_constantBufferData.projection, XMMatrixTranspose(XMMatrixInverse(nullptr, perspectiveMatrix * orientationMatrix)));
 
-	static const XMVECTORF32 eye = { 6.0f, 0.0f, 0.0f, 1.0f };
-	static const XMVECTORF32 at = { 0.0f, 0.0f, 0.0f, 1.0f };
+	static const XMVECTORF32 eye = { 6.0f, 0.0f, -1.0f, 1.0f };
+	static const XMVECTORF32 at = { 0.0f, 0.0f, 1.0f, 1.0f };
 	static const XMVECTORF32 up = { 0.0f, 1.0f, 0.0f, 1.0f };
 	XMStoreFloat4x4(&m_constantBufferData.view, XMMatrixTranspose(XMMatrixInverse(nullptr, XMMatrixLookAtRH(eye, at, up))));
 
@@ -522,7 +545,7 @@ void Sample3DSceneRenderer::Render()
 		useProgram(2); //Interection shader (diffuse plane)
 		
 		m_constantBufferData.origin = { 1.0f, 0.0f, 0.0f };
-		m_constantBufferData.radius = 0.9;
+		m_constantBufferData.radius = 0.5;
 		m_constantBufferData.primitiveType = 0;
 		m_constantBufferData.primitiveID = 2;
 		memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
@@ -543,12 +566,12 @@ void Sample3DSceneRenderer::Render()
 		memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
 		useProgram(2); //Interection shader (sphere)
 		
-
-		m_constantBufferData.count = 1;
+		m_constantBufferData.origin = { 0.0f, 2.0f, 1.0f };
+		m_constantBufferData.count = 36 / 3;
 		m_constantBufferData.primitiveType = 2;
 		m_constantBufferData.primitiveID = 5;
 		memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
-		useProgram(2); //Interection shader (sphere)
+		useProgram(2); //Interection shader (polygon)
 
 		useProgram(3); //Background shader
 		
@@ -574,7 +597,7 @@ void Sample3DSceneRenderer::Render()
 		useProgram(9); //Refraction shader
 
 		m_constantBufferData.primitiveID = 5;
-		m_constantBufferData.mcolor = { 0.9f, 0.2f, 0.2f };
+		m_constantBufferData.mcolor = { 0.1f, 0.9f, 0.1f };
 		memcpy(m_mappedConstantBuffer, &m_constantBufferData, sizeof(m_constantBufferData));
 		useProgram(4); //Diffuse shader
 
