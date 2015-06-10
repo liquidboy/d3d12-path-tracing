@@ -1,3 +1,3 @@
 # Path Tracing
 
-[[path_tracer.png]]
+[[/path_tracer.png]]
