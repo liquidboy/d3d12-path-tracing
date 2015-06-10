@@ -1,3 +1,3 @@
 # Path Tracing
 
-[[/path_tracer.png]]
+![Screenshot](/path_tracer.png)
