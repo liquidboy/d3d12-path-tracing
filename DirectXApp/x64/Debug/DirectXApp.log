@@ -1,12 +1,16 @@
-﻿Сборка начата 10.06.2015 22:02:09.
+﻿Сборка начата 10.06.2015 23:06:17.
      1>Проект "C:\Users\acterhd\Documents\C++\DirectXApp\DirectXApp.vcxproj" в узле 2 (целевые объекты Build).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\CL.exe /c /IC:\Users\acterhd\Documents\C++\DirectXApp\ /Ix64\Debug\ /IC:\Users\acterhd\Documents\C++\DirectXApp\ /I"Generated Files\\" /Ix64\Debug\ /ZI /ZW /ZW:nostdlib /nologo /W3 /WX- /sdl /MP /Od /Oy- /D _DEBUG /D _UNICODE /D UNICODE /D _DEBUG /D WINAPI_FAMILY=WINAPI_FAMILY_APP /D __WRL_NO_DEFAULT_LIB__ /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"pch.h" /Fp"x64\Debug\pch.pch" /Fo"x64\Debug\\" /Fd"x64\Debug\vc140.pdb" /Gd /TP /wd4453 /wd28204 /wd4267 /FU"C:\Program Files (x86)\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\References\CommonConfiguration\neutral\platform.winmd" /FU"C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.FoundationContract\1.0.0.0\Windows.Foundation.FoundationContract.winmd" /FU"C:\Program Files (x86)\Windows Kits\10\References\Windows.Foundation.UniversalApiContract\1.0.0.0\Windows.Foundation.UniversalApiContract.winmd" /FU"C:\Program Files (x86)\Windows Kits\10\References\Windows.Networking.Connectivity.WwanContract\1.0.0.0\Windows.Networking.Connectivity.WwanContract.winmd" /analyze- /errorReport:prompt /bigobj Content\Sample3DSceneRenderer.cpp
-         Sample3DSceneRenderer.cpp
-     1>c:\users\acterhd\documents\c++\directxapp\content\sample3dscenerenderer.cpp(93): warning C4018: <: несоответствие типов со знаком и без знака
-     1>c:\users\acterhd\documents\c++\directxapp\content\sample3dscenerenderer.cpp(411): warning C4018: <: несоответствие типов со знаком и без знака
-     1>c:\users\acterhd\documents\c++\directxapp\content\sample3dscenerenderer.cpp(556): warning C4305: =: усечение из "double" к "float"
-     1>c:\users\acterhd\documents\c++\directxapp\content\sample3dscenerenderer.cpp(563): warning C4305: =: усечение из "double" к "float"
+     1>FxCompile:
+         C:\Program Files (x86)\Windows Kits\10\bin\x86\fxc.exe /nologo /E"main" /T ps_5_0 /Fo "C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\intersection.cso" /Od /Zi Content\shaders\intersection.hlsl 
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(84,20-68): warning X3205: 'sin': conversion from larger type to smaller, possible loss of data
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\headers\elements.hlsli(84,15-89): warning X3205: 'frac': conversion from larger type to smaller, possible loss of data
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\intersection.hlsl(93,17-25): warning X3203: signed/unsigned mismatch, unsigned assumed
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\intersection.hlsl(16,29): warning X4000: use of potentially uninitialized variable (intersectSphere)
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\intersection.hlsl(25,2): warning X4000: use of potentially uninitialized variable (t)
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\intersection.hlsl(8,26): warning X4000: use of potentially uninitialized variable (intersectPlane)
+     1>C:\Users\acterhd\Documents\C++\DirectXApp\Content\shaders\intersection.hlsl(64,2): warning X4000: use of potentially uninitialized variable (intersectTriangle)
+         
+         compilation object save succeeded; see C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\intersection.cso
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\DirectXApp.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\\lib\store\amd64" /LIBPATH:"C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\\lib\amd64" d3d12.lib dxgi.lib WindowsApp.lib /MANIFEST:NO /DEBUG:FASTLINK /PDB:"C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\DirectXApp.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /APPCONTAINER /WINMD /WINMDFILE:"C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\DirectXApp.winmd" /DYNAMICBASE /NXCOMPAT /MACHINE:X64 x64\Debug\App.obj
          x64\Debug\DeviceResources.obj
@@ -18,4 +22,4 @@
 
 Сборка успешно завершена.
 
-Затраченное время: 00:00:04.58
+Затраченное время: 00:00:01.24

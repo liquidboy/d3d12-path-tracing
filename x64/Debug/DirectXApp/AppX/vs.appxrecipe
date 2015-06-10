@@ -26,11 +26,11 @@
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\DirectXApp.exe">
       <PackagePath>DirectXApp.exe</PackagePath>
-      <Modified>2015-06-10T14:02:13.515</Modified>
+      <Modified>2015-06-10T15:06:18.684</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\DirectXApp.winmd">
       <PackagePath>DirectXApp.winmd</PackagePath>
-      <Modified>2015-06-10T14:02:13.913</Modified>
+      <Modified>2015-06-10T15:06:19.167</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\DirectXApp\Assets\Logo.scale-100.png">
       <PackagePath>Assets\Logo.scale-100.png</PackagePath>
@@ -86,7 +86,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\intersection.cso">
       <PackagePath>intersection.cso</PackagePath>
-      <Modified>2015-06-10T13:47:42.241</Modified>
+      <Modified>2015-06-10T15:06:18.291</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\acterhd\Documents\C++\x64\Debug\DirectXApp\light.cso">
       <PackagePath>light.cso</PackagePath>
